@@ -1,0 +1,28 @@
+nav {
+    background-color: #007bff; 
+    padding: 15px; 
+    display: flex;
+    justify-content: center; 
+    border-radius: 5px;
+  }
+  
+  nav button {
+    background-color: transparent; 
+    color: white; 
+    border: 2px solid white; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    margin: 0 10px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.5s; 
+  }
+  
+  nav button:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    transform: scale(1.05);
+  }
+  
+  nav button:focus {
+    outline: none; 
+  }
+  
