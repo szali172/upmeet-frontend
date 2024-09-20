@@ -1,15 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
-
-
-export interface Event {
-  title: string;
-  description: string;
-  date: string;
-  id: string;
-  isFavorited: boolean;
-}
+import { Event } from '../../models/event';
 
 @Component({
   selector: 'app-event-list',
@@ -19,14 +11,6 @@ export interface Event {
   styleUrls: ['./event-list.component.css'] 
 })
 export class EventListComponent implements OnInit {
-  event = {
-    title: '',
-    description: '',
-    date: '',
-    id: '',
-    isFavorited: false
-  };
-
   events: Event[] = [];
   currentMode: string = 'all';
 
@@ -43,7 +27,7 @@ export class EventListComponent implements OnInit {
 
   toggleFavorite(id: string) {
     
-    this.event.isFavorited = !this.event.isFavorited; 
+    // this.events.isFavorited = !this.events.isFavorited; 
   }
 
   loadEvents() {
