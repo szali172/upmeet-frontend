@@ -1,31 +1,53 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Event } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../../services/events.service';
 
+
+export interface Event {
+  title: string;
+  description: string;
+  date: string;
+  id: string;
+  isFavorited: boolean;
+}
 
 @Component({
   selector: 'app-event-list',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './event-list.component.html',
-  styleUrl: './event-list.component.css'
+  styleUrls: ['./event-list.component.css'] 
 })
-export class EventListComponent {
-toggleFavorite(arg0: any) {
-throw new Error('Method not implemented.');
-}
+export class EventListComponent implements OnInit {
+  event = {
+    title: '',
+    description: '',
+    date: '',
+    id: '',
+    isFavorited: false
+  };
+
   events: Event[] = [];
   currentMode: string = 'all';
 
-  //constructor(
-    //private eventService: EventService,
-    //private appEventService: AppEventService
- // ) {}
+  constructor(
+    private eventService: EventsService
+  ) {}
 
- // ngOnInit() {
-    //this.eventService.currentMode$.subscribe(mode => {
-      //this.currentMode = mode;
-      //this.loadEvents();
-    //});
-  //}
+  ngOnInit() {
+    this.eventService.currentMode$.subscribe((mode: string) => {
+      this.currentMode = mode;
+      this.loadEvents();
+    });
+  }
+
+  toggleFavorite(id: string) {
+    
+    this.event.isFavorited = !this.event.isFavorited; 
+  }
+
+  loadEvents() {
+    this.eventService.getAllEvents(this.currentMode).subscribe(events => {
+    });
+  }
 }
