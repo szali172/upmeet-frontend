@@ -1,0 +1,18 @@
+.container {
+    border: 5px sold black;
+    border-radius: 10px;
+    background-color: wheat;
+    width: auto;
+    width: 300px;
+    max-height: 300px;
+    padding: 50px 10px 5px 10px;
+    margin: 50px;
+
+    cursor: pointer;
+}
+
+.bottom-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
