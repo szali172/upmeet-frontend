@@ -11,10 +11,11 @@ import { Event } from '@angular/router';
 export class EventsService {
 
   eventUrl: string = environment.apiUrl + "/Events";
+  currentMode$: any;
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllEvents(): Observable<Event[]> {
+  getAllEvents(currentMode: string): Observable<Event[]> {
     return this.httpClient.get<Event[]>(this.eventUrl);
   }
 
