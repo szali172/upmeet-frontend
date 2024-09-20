@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Event } from '@angular/router';
+import { Event } from '../models/event';
 
 
 @Injectable({
@@ -11,11 +11,10 @@ import { Event } from '@angular/router';
 export class EventsService {
 
   eventUrl: string = environment.apiUrl + "/Events";
-  currentMode$: any;
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllEvents(currentMode: string): Observable<Event[]> {
+  getAllEvents(): Observable<Event[]> {
     return this.httpClient.get<Event[]>(this.eventUrl);
   }
 

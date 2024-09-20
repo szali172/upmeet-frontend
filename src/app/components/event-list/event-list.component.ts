@@ -1,28 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../models/event';
+import { EventCardComponent } from "../event-card/event-card.component";
+
 
 @Component({
   selector: 'app-event-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EventCardComponent],
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.css'] 
 })
 export class EventListComponent implements OnInit {
+  eventsService = inject(EventsService);
   events: Event[] = [];
   currentMode: string = 'all';
 
-  constructor(
-    private eventService: EventsService
-  ) {}
-
   ngOnInit() {
-    this.eventService.currentMode$.subscribe((mode: string) => {
-      this.currentMode = mode;
-      this.loadEvents();
-    });
+   this.loadEvents()
   }
 
   toggleFavorite(id: string) {
@@ -31,7 +27,8 @@ export class EventListComponent implements OnInit {
   }
 
   loadEvents() {
-    this.eventService.getAllEvents(this.currentMode).subscribe(events => {
+    this.eventsService.getAllEvents().subscribe(events => {
+    this.events= events
     });
   }
 }
