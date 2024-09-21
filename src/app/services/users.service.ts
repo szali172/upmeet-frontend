@@ -10,7 +10,7 @@ import { User } from '../models/user';
 })
 export class UsersService {
 
-  userUrl: string = environment.apiUrl + "/User";
+  userUrl: string = environment.apiUrl + "/Users";
 
   constructor(private httpClient: HttpClient) { }
 
