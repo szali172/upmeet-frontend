@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, SimpleChanges } from '@angular/core';
 import { FavoritesService } from '../../services/favorites.service';
 import { Event } from '../../models/event';
 import { CommonModule } from '@angular/common';
@@ -17,11 +17,18 @@ export class FavoriteListComponent {
   favorites: Event[] = [];
   userId: number = 1; 
 
-  constructor(private favoritesService: FavoritesService) {}
+  favoritesService = inject(FavoritesService)
 
   ngOnInit(): void {
-    this.loadFavorites();
+    this.getUserFavorites();
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['favorites'] && this.favorites !== null) {
+      this.getUserFavorites();  // Call it only when user is updated
+    }
+  }
+
 
   loadFavorites(): void {
     this.favoritesService.GetFavoritesByUserId(this.userId).subscribe(
@@ -32,5 +39,13 @@ export class FavoriteListComponent {
         console.error('Error fetching favorites:', error);
       }
     );
+  }
+
+  getUserFavorites() : void {
+      this.favoritesService.GetFavoritesByUserId(this.userId).subscribe(
+        (response) => {
+          this.favorites = response;
+        }
+      )
   }
 }
