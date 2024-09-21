@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FavoritesService } from '../../services/favorites.service';
 import { User } from '../../models/user';
 import { Favorite } from '../../models/favorite';
-
+import { Event as AngularEvent } from '@angular/router';
 
 @Component({
   selector: 'app-event-card',
@@ -25,6 +25,7 @@ export class EventCardComponent {
 
   getEventDetails() {
     // let modal = document.getElementById()
+    console.log("Parent is being clicked");
   }
 
   ngOnInit() {
@@ -58,19 +59,21 @@ export class EventCardComponent {
 
 
   /* Switch between the favorited states and update the Db */
-  switchState() : void {
+  switchState($event: any): void {
+    // Stop the click event from bubbling up to the container
+    $event.stopPropagation();
+
     // Event is currently favorited, it now needs to be removed
     if (this.favorited === true) {
-      this.removeFavorite()
+      this.removeFavorite();
     } 
-
     // Event isn't currently favorited, it now needs to be added
     else {
-      this.favoriteEvent()
+      this.favoriteEvent();
     }
-    
-    this.favorited = !this.favorited
-  }
+
+    this.favorited = !this.favorited;
+}
   
 
   // getRandomColor() {
