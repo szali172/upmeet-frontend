@@ -1,5 +1,6 @@
 <nav>
     <button (click)="showAllEvents()">All Events</button>
-    <button (click)="showFavoriteEvents()">Favorite Events</button>
+    <button [routerLink]="['favorite=list']">Favorite Events</button>
+    <button [routerLink]="['create-event']">Create Event</button>
   </nav>
   
