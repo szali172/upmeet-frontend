@@ -53,7 +53,7 @@ export class EventCardComponent {
   /* Removes the current favorited event from the user's list */
   removeFavorite() : void {
     if (this.user !== null && this.event !== null) {
-      this.favoritesService.DeleteFavorite(this.user.userId, this.event.eventId).subscribe( (response) => console.log(response));
+      this.favoritesService.DeleteFavorite(this.user.userId, this.event.eventId).subscribe();
     }
   }
 
