@@ -22,7 +22,7 @@ export class EventsService {
     return this.httpClient.get<Event>(`${this.eventUrl}/${id}`);
   }
 
-  createEvent(event: Omit<Event, 'id'>): Observable<Event> {
+  createEvent(event: Omit<Event, 'eventId'>): Observable<Event> {
     return this.httpClient.post<Event>(this.eventUrl, event);
   }
 

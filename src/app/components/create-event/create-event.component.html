@@ -1,0 +1,27 @@
+
+<div class="container">
+  <h2>Create Event</h2>
+  <form (ngSubmit)="createEvent()">
+    <div class="form-group">
+      <label for="eventName">Event Name</label>
+      <input type="text" id="eventName" class="form-control" [(ngModel)]="eventName" name="eventName" required maxlength="100">
+    </div>
+
+    <div class="form-group">
+      <label for="eventDescription">Event Description</label>
+      <textarea id="eventDescription" class="form-control" [(ngModel)]="eventDescription" name="eventDescription" required maxlength="500"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="eventLocation">Event Location</label>
+      <input type="text" id="eventLocation" class="form-control" [(ngModel)]="eventLocation" name="eventLocation" required maxlength="50">
+    </div>
+
+    <div class="form-group">
+      <label for="eventTime">Event Time</label>
+      <input type="datetime-local" id="eventTime" class="form-control" [(ngModel)]="eventTime" name="eventTime" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Event</button>
+  </form>
+</div>
