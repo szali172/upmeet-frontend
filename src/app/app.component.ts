@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { MainPageComponent } from "./components/main-page/main-page.component";
 import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 import { EventListComponent } from "./components/event-list/event-list.component";
+import { FavoriteListComponent } from "./components/favorite-list/favorite-list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MainPageComponent, NavBarComponent, EventListComponent],
+  imports: [RouterOutlet, MainPageComponent, NavBarComponent, EventListComponent, FavoriteListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
