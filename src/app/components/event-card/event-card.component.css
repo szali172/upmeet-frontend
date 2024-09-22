@@ -31,13 +31,20 @@
     justify-content: space-between;
 }
 
+#title {
+    text-align: left;
+    padding: 10px 0;
+}
+
 .favorite-btn {
     border: 1px solid rgb(216, 216, 216);
     border-radius: 20px;
     background-color:rgb(228, 228, 228);
     box-shadow: 0 7px #999;
     padding: 0px 15px;
+    place-content: center;
     height: auto;
+    max-height: 50px;
     cursor: pointer;
     pointer-events: auto;
 }
@@ -59,6 +66,13 @@
     justify-content: space-between;
 }
 
-:root {
-    --card-color: wheat;
+#event-time {
+    text-align: left;
+}
+
+#event-location {
+    color:#6b6b6b;
+    font-size: 0.9rem;
+    text-align: right;
+    text-wrap: pretty;
 }

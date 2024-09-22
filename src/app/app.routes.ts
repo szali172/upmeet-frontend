@@ -5,7 +5,7 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 
 export const routes: Routes = [
     {path: '', component:MainPageComponent},
-    {path: 'favorite=list', component:FavoriteListComponent},
-    { path: 'create-event', component: CreateEventComponent}
+    {path: 'favorite-list/:user', component:FavoriteListComponent},
+    {path: 'create-event', component: CreateEventComponent}
 
 ];

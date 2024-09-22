@@ -1,7 +1,53 @@
 <div class="container">
-<div *ngFor="let event of events" class="event-card">
-  <app-event-card [user]="this.user" [event]="event" [favorited]="eventIsFavorited(event.eventId)"></app-event-card>
-  </div> 
+  <div *ngFor="let event of events" class="event-card">
+    <app-event-card [user]="this.user" [event]="event" [favorited]="eventIsFavorited(event.eventId)"></app-event-card>
+
+    <!-- Event Details Modal (one for each event) -->
+    <div class="modal fade" id="event-details-modal-{{event.eventId}}" tabindex="-1" [attr.aria-labelledby]="'modal-label-' + event.eventId" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-label-{{event.eventId}}">{{ event?.eventName }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <label class="field-header">
+                Date:
+              </label>
+              {{event?.eventTime?.toLocaleDateString()}}
+            </div>
+            <div>
+              <label class="field-header">
+                Location:
+              </label>
+              {{event?.eventLocation}}
+            </div>
+            <div class="field-header">
+              Description:
+            </div>
+            <div id="event-description">
+              {{ event?.eventDescription }}
+            </div>
+          </div>
+
+          <!-- Dynamic button depending on if event is favorited or not -->
+          <!-- <div class="modal-footer">
+            <div *ngIf="eventIsFavorited(event.eventId) === true; then filled_in else empty"></div>
+
+              <ng-template #filled_in>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Remove Favorite <i class="bi bi-x-lg"></i></button>
+              </ng-template>
+              <ng-template #empty>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add to Favorites <i class="bi bi-plus-circle"></i></button>
+              </ng-template>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div> 
   
   
   

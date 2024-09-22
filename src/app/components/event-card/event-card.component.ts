@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FavoritesService } from '../../services/favorites.service';
 import { User } from '../../models/user';
 import { Favorite } from '../../models/favorite';
-import { Event as AngularEvent } from '@angular/router';
 
 @Component({
   selector: 'app-event-card',
@@ -22,11 +21,6 @@ export class EventCardComponent {
   @Input({required: true}) event: Event | null = null;
   @Input({required: true}) favorited: boolean = false;
 
-
-  getEventDetails() {
-    // let modal = document.getElementById()
-    console.log("Parent is being clicked");
-  }
 
   ngOnInit() {
     this.stringToDatetime()

@@ -27,7 +27,7 @@
     margin: 5px 0;
   }
   
-  .event-card button {
+  /* .event-card button {
     background-color: #007bff; 
     color: white; 
     border: none; 
@@ -40,11 +40,44 @@
   .event-card button:hover {
     background-color: #0056b3; 
   }
-  
+  */
+
   .no-events {
     text-align: center; 
     color: #666; 
     font-size: 18px; 
      
   }
-  
+
+
+.modal-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-body {
+  background-color: #f9f9f9;
+  border-radius: 0 0 10px 10px;
+}
+
+.modal-subheading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0 50px 0;
+}
+
+.field-header {
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+#event-description {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgb(121, 121, 121);
+  margin: 0 75px 10px 30px;
+  padding: 5px 5px;
+  height: auto;
+  min-height: 100px;
+}
