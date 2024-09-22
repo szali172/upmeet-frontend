@@ -25,20 +25,8 @@ export class FavoriteListComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['favorites'] && this.favorites !== null) {
-      this.getUserFavorites();  // Call it only when user is updated
+      this.getUserFavorites(); 
     }
-  }
-
-
-  loadFavorites(): void {
-    this.favoritesService.GetFavoritesByUserId(this.userId).subscribe(
-      (data: Event[]) => {
-        this.favorites = data;
-      },
-      (error) => {
-        console.error('Error fetching favorites:', error);
-      }
-    );
   }
 
   getUserFavorites() : void {
