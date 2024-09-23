@@ -37,11 +37,4 @@ export class FavoriteListComponent {
       )
   }
 
-  getUserFavorites() : void {
-      this.favoritesService.GetFavoritesByUserId(this.userId).subscribe(
-        (response) => {
-          this.favorites = response;
-        }
-      )
-  }
 }
