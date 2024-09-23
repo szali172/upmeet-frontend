@@ -1,18 +1,17 @@
 
-.favorite-event {
-  background: #f6f8f6; 
-  padding: 15px; 
-  margin: 10px 0; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-}
+ .favorite-event {
+    background: #f6f8f6; 
+    padding: 15px; 
+    margin: 10px 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  }
 
-.no-bullet {
-  list-style: none; 
-}
-
-li p {
-  font-weight: bold; 
-  color: #12942c; 
-}
-
-
+  .no-bullet {
+    list-style: none; 
+  }
+  
+  li p {
+    font-weight: bold; 
+    color: #12942c; 
+  }
+ 
