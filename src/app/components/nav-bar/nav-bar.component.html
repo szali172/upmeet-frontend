@@ -1,6 +1,6 @@
 <nav>
-    <button (click)="showAllEvents()">All Events</button>
-    <button [routerLink]="['favorite=list']">Favorite Events</button>
-    <button [routerLink]="['create-event']">Create Event</button>
-  </nav>
+  <p id="welcome">Welcome, {{this.user?.userName}}!</p>
+  <button [routerLink]="['favorite-list']">Favorite Events</button>
+  <button [routerLink]="['create-event']">Create Event</button>
+</nav>
 

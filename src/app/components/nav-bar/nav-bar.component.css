@@ -26,3 +26,10 @@ nav {
     outline: none; 
   }
   
+#welcome {
+  color: white;
+  font-weight: bold;
+  margin-right: auto;
+  place-items: center;
+  padding: 10px 0 0 0;
+}

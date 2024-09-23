@@ -1,9 +1,9 @@
 <div class="main-page">
     <header>
-      <h1>UPMEET APP</h1>
+      <h1>UpMeet</h1>
     </header>
   
-    <app-nav-bar></app-nav-bar>
+    <app-nav-bar [user]="currentUser"></app-nav-bar>
     
     <section>
       <app-event-list [user]="currentUser"></app-event-list>

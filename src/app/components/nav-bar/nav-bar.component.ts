@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class NavBarComponent {
   @Output() navChange = new EventEmitter<string>();
+  @Input() user: User | null = null;
 
   showAllEvents() {
     this.navChange.emit('all');
