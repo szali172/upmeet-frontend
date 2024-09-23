@@ -20,7 +20,9 @@ export class EventListComponent implements OnInit {
   favoritesService = inject(FavoritesService)
 
   events: Event[] = [];
-  currentMode: string = 'all';
+  assignedColors: string[] = [""];
+  colors: string[] = ['#e3e4d4', '#e1c846', '#6b8c5c', '#ab7dd2', '#edca78', '#dc5319', '#cf6152',
+    '#cc7cef', '#11e58f', '#f2e2d1', '#f2e28f', '#ba94ad', '#d2af77']
 
   @Input({required: true}) user: User | null = null;
   userFavorites: Event[] = [];
@@ -44,7 +46,7 @@ export class EventListComponent implements OnInit {
   loadEvents() {
     this.eventsService.getAllEvents().subscribe(events => {
     this.events = events
-    console.log(events);
+    this.setRandomColors()
     });
   }
 
@@ -65,6 +67,15 @@ export class EventListComponent implements OnInit {
   eventIsFavorited(eventId: number) : boolean {
     // Grab the eventIds from the favorited events and cross-check with the currnet eventId
     return this.userFavorites.map(a => a.eventId).includes(eventId);
+  }
+
+  /* Set a random background color for each event card */
+  setRandomColors() : void {
+    this.assignedColors = new Array(this.events.length);
+    for (let i = 0; i < this.events.length; i++) {
+      let color = this.colors[Math.floor(Math.random() * this.colors.length)];
+      this.assignedColors[i] = color
+    }
   }
   
 }

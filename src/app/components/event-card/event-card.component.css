@@ -3,15 +3,18 @@
 } */
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: 1px solid rgb(115, 115, 115);
     border-radius: 10px;
     box-shadow: -2px 4px 5px 0.1px rgb(82, 82, 82),
                  2px 0px 5px 0.1px rgb(82, 82, 82);
-    background-color: wheat;
     width: 350px;
-    max-height: 300px;
-    padding: 50px 10px 5px 10px;
-    margin: 50px;
+    height: 160px;
+    /* max-height: 300px; */
+    padding: 20px 10px 5px 10px;
+    margin: 20px;
 
     cursor: pointer;
 

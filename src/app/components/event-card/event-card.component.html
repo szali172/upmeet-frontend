@@ -1,15 +1,19 @@
-<div class="container btn" data-bs-toggle="modal" [attr.data-bs-target]="'#event-details-modal-' + event?.eventId">
+<div 
+    class="container btn"
+    (click)="onCardClick()"
+    [ngStyle]="{'background-color': this.cardColor}">
+  
     <div class="top-row">
         <h3 id="title">{{ event?.eventName }}</h3>
         
         <div *ngIf="favorited === true; then filled_in else empty"></div>
 
         <ng-template #filled_in>
-            <i (click)="switchState($event)" class="bi bi-star-fill favorite-btn" width="25" height="25" viewBox="0 0 16 16"></i>
+            <i (click)="handleFavoriteClick($event)" class="bi bi-star-fill favorite-btn" width="25" height="25" viewBox="0 0 16 16"></i>
         </ng-template>
 
         <ng-template #empty>
-            <i (click)="switchState($event)" class="bi bi-star favorite-btn" ></i>
+            <i (click)="handleFavoriteClick($event)" class="bi bi-star favorite-btn" ></i>
         </ng-template>
 
     </div>

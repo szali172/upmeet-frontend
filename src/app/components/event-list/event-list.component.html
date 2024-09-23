@@ -1,12 +1,22 @@
 <div class="container">
-  <div *ngFor="let event of events" class="event-card">
-    <app-event-card [user]="this.user" [event]="event" [favorited]="eventIsFavorited(event.eventId)"></app-event-card>
+  <div *ngFor="let event of events; let i = index">
+    <app-event-card
+      [user]="this.user"
+      [event]="event"
+      [favorited]="eventIsFavorited(event.eventId)"
+      [cardColor]="this.assignedColors[i]">
+    </app-event-card>
 
     <!-- Event Details Modal (one for each event) -->
-    <div class="modal fade" id="event-details-modal-{{event.eventId}}" tabindex="-1" [attr.aria-labelledby]="'modal-label-' + event.eventId" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="event-details-modal-{{event.eventId}}"
+      tabindex="-1"
+      [attr.aria-labelledby]="'modal-label-' + event.eventId"
+      aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header" [ngStyle]="{'background-color': this.assignedColors[i]}">
             <h1 class="modal-title fs-5" id="modal-label-{{event.eventId}}">{{ event?.eventName }}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FavoritesService } from '../../services/favorites.service';
 import { User } from '../../models/user';
 import { Favorite } from '../../models/favorite';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-event-card',
@@ -20,6 +21,7 @@ export class EventCardComponent {
   @Input({required: true}) user: User | null = null;
   @Input({required: true}) event: Event | null = null;
   @Input({required: true}) favorited: boolean = false;
+  @Input() cardColor: string = "#f5deb3";
 
 
   ngOnInit() {
@@ -53,10 +55,7 @@ export class EventCardComponent {
 
 
   /* Switch between the favorited states and update the Db */
-  switchState($event: any): void {
-    // Stop the click event from bubbling up to the container
-    $event.stopPropagation();
-
+  switchState(): void {
     // Event is currently favorited, it now needs to be removed
     if (this.favorited === true) {
       this.removeFavorite();
@@ -67,15 +66,34 @@ export class EventCardComponent {
     }
 
     this.favorited = !this.favorited;
-}
-  
+  }
 
-  // getRandomColor() {
-  //   var letters = '0123456789ABCDEF';
-  //   var color = '#';
-  //   for (var i = 0; i < 6; i++) {
-  //     color += letters[Math.floor(Math.random() * 16)];
-  //   }
-  //   return color;
-  // }
+
+  /* The following methods and properties handle event bubbling on the favorite button click */
+  disableModalTrigger: boolean = false;
+
+  onCardClick(): void {
+    if (!this.disableModalTrigger && this.event) {
+      const modalId = `#event-details-modal-${this.event.eventId}`;
+      const modalElement = document.querySelector(modalId);
+      if (modalElement) {
+        const modalInstance = new Modal(modalElement);
+        modalInstance.show();
+      }
+    }
+  }
+
+  handleFavoriteClick($event: any): void {
+    // Prevent the modal from being triggered
+    this.disableModalTrigger = true;
+
+    // Stop the event from bubbling up to the card click event
+    $event.stopPropagation();
+
+    this.switchState();
+
+    // Re-enable the modal trigger after a small delay
+    setTimeout(() => this.disableModalTrigger = false, 300);
+  }
+  
 }
