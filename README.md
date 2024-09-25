@@ -1,3 +1,5 @@
+***View the Backend repository [here](https://github.com/szali172/upmeet-backend)!***
+
 # UpmeetFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
